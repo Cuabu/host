@@ -1,0 +1,116 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Urbanist', sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+    position: relative;
+}
+
+.alert {
+    background-color: #f9f9f9;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.alert-text {
+    color: #333;
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
+.nav-list {
+    list-style-type: none;
+    display: flex;
+}
+
+.nav-item {
+    margin-right: 20px;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn-secondary {
+    background-color: #333;
+}
+
+.btn:hover,
+.btn-secondary:hover {
+    background-color: #45a049;
+}
+
+.input-wrapper {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.search-field {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.search-submit {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+style>.btn-secondary {
+    position: sticky;
+    top: 20px;
+    right: 20px;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: var(--black);
+    color: var(--white);
+}
