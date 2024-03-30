@@ -1,2 +1,0 @@
-# host
-multiple plataformas
