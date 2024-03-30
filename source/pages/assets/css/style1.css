@@ -21,22 +21,24 @@ body{
     min-height: 110vh;
     background: rgba(39, 39, 39, 0.4);
 }
-.nav{
-    position: fixed;
+
+.nav {
+     position: fixed;
     top: 0;
-    display: flex;
-    justify-content: space-around;
+    left: 0;
     width: 100%;
-    height: 100px;
-    line-height: 100px;
-    background: linear-gradient(rgba(39,39,39, 0.6), transparent);
-    z-index: 100;
-}
-.nav-logo p{
-    color: white;
-    font-size: 25px;
-    font-weight: 600;
-}
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: transparent; 
+    color: #fff;
+    z-index: 999; /* Asegura que la barra de navegación esté sobre otros elementos */
+        }
+        .nav .nav-logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
 .nav-menu ul{
     display: flex;
 }
@@ -68,6 +70,8 @@ body{
 }
 #registerBtn{
     margin-left: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .btn.white-btn{
     background: rgba(255, 255, 255, 0.7);
@@ -84,7 +88,7 @@ body{
     align-items: center;
     justify-content: center;
     width: 512px;
-    height: 420px;
+    height: 520px;
     overflow: hidden;
     z-index: 2;
 }
@@ -120,7 +124,7 @@ header{
     color: #fff;
     font-size: 30px;
     text-align: center;
-    padding: 10px 0 30px 0;
+    padding: 50px 0 20px 0;
 }
 .two-forms{
     display: flex;

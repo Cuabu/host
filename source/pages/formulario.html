@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./assets/css/style1.css">
     <link rel="shortcut icon" href="./assets/images/icono.png" type="image/svg+xml">
     <title>inicio | registro</title>
+
 </head>
 
 <body>
@@ -17,14 +18,7 @@
             <div class="nav-logo">
                 <p>Speed Store .</p>
             </div>
-            <div class="nav-menu" id="navMenu">
-                <ul>
-                    <li><a href="index.html" class="link active">inicio</a></li>
-                    <li><a href="index.html" class="link">Categorias</a></li>
-                    <li><a href="index.html" class="link">blog</a></li>
-                    <li><a href="index.html" class="link">Acerca de</a></li>
-                </ul>
-            </div>
+
             <div class="nav-button">
                 <button class="btn white-btn" id="loginBtn" onclick="login()">Iniciar Sesion</button>
                 <button class="btn" id="registerBtn" onclick="register()">Registrarme</button>
@@ -46,14 +40,14 @@
                         <header>Iniciar Sesión</header>
                     </div>
                     <div class="input-box">
-                        <label for="username">Nombre de usuario o Gmail:</label>
-                        <input type="text" class="input-field" id="email" name="email"
+                        <label for="emailLogin">Nombre de usuario o Gmail:</label>
+                        <input type="text" class="input-field" id="emailLogin" name="emailLogin"
                             placeholder="Escribe tu nombre de usuario o Gmail">
                         <i class="bx bx-user"></i>
                     </div>
                     <div class="input-box">
-                        <label for="password">Contraseña:</label>
-                        <input type="password" class="input-field" id="password" name="password"
+                        <label for="passwordLogin">Contraseña:</label>
+                        <input type="password" class="input-field" id="passwordLogin" name="passwordLogin"
                             placeholder="Escribe tu contraseña">
                         <i class="bx bx-lock-alt"></i>
                     </div>
@@ -66,51 +60,50 @@
                             <label for="login-check"> Recuérdame</label>
                         </div>
                         <div class="two">
-                            <label><a href="#">¿Has olvidado tu contraseña?</a></label>
+                            <a href="#">¿Has olvidado tu contraseña?</a>
                         </div>
                     </div>
                 </form>
             </div>
 
-
-
             <div class="register-container" id="register">
-                <form action="../php/registro.php" method="post">
+                <form id="registerForm" method="post" onsubmit="return validateForm()" action="../php/registro.php">
                     <div class="top">
                         <span>¿Ya tienes una cuenta? <a href="#" onclick="login()">Iniciar Sesión</a></span>
                         <header>Crear Cuenta</header>
                     </div>
                     <div class="two-forms">
                         <div class="input-box">
-                            <label for="nombre">Nombre</label>
-                            <input type="text" class="input-field" name="nombre" id="nombre" placeholder="Nombre">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" class="input-field" name="nombre" id="nombre" placeholder="Nombre"
+                                required>
                             <i class="bx bx-user"></i>
                         </div>
                         <div class="input-box">
-                            <label for="apellido">Apellido</label>
-                            <input type="text" class="input-field" name="apellido" id="apellido" placeholder="Apellido">
+                            <label for="apellido">Apellido:</label>
+                            <input type="text" class="input-field" name="apellido" id="apellido"
+                                placeholder="Apellido" required>
                             <i class="bx bx-user"></i>
                         </div>
                     </div>
                     <div class="input-box">
-                        <label for="email">Correo Electrónico</label>
-                        <input type="email" class="input-field" name="email" id="email"
-                            placeholder="Correo Electrónico">
+                        <label for="emailRegister">Correo Electrónico:</label>
+                        <input type="email" class="input-field" name="emailRegister" id="emailRegister"
+                            placeholder="Correo Electrónico" required>
                         <i class="bx bx-envelope"></i>
                     </div>
                     <div class="input-box">
-                        <label for="password">Contraseña</label>
-                        <input type="password" class="input-field" name="password" id="password"
-                            placeholder="Contraseña">
+                        <label for="passwordRegister">Contraseña:</label>
+                        <input type="password" class="input-field" name="passwordRegister" id="passwordRegister"
+                            placeholder="Contraseña" required>
                         <i class="bx bx-lock-alt"></i>
                     </div>
-
-
                     <div class="input-box">
                         <input type="submit" class="submit" value="Registrarme">
                     </div>
                 </form>
             </div>
+
 
             <script>
 
@@ -124,16 +117,12 @@
                     }
                 }
 
-            </script>
-
-            <script>
-
-                var a = document.getElementById("loginBtn");
-                var b = document.getElementById("registerBtn");
-                var x = document.getElementById("login");
-                var y = document.getElementById("register");
-
                 function login() {
+                    var a = document.getElementById("loginBtn");
+                    var b = document.getElementById("registerBtn");
+                    var x = document.getElementById("login");
+                    var y = document.getElementById("register");
+
                     x.style.left = "4px";
                     y.style.right = "-520px";
                     a.className += " white-btn";
@@ -143,12 +132,35 @@
                 }
 
                 function register() {
+                    var a = document.getElementById("loginBtn");
+                    var b = document.getElementById("registerBtn");
+                    var x = document.getElementById("login");
+                    var y = document.getElementById("register");
+
                     x.style.left = "-510px";
                     y.style.right = "5px";
                     a.className = "btn";
                     b.className += " white-btn";
                     x.style.opacity = 0;
                     y.style.opacity = 1;
+                }
+
+                function validateForm() {
+                    var nombre = document.getElementById("nombre").value;
+                    var apellido = document.getElementById("apellido").value;
+                    var email = document.getElementById("emailRegister").value;
+                    var password = document.getElementById("passwordRegister").value;
+
+                    console.log("Nombre:", nombre);
+                    console.log("Apellido:", apellido);
+                    console.log("Email:", email);
+                    console.log("Contraseña:", password);
+
+                    if (nombre == "" || apellido == "" || email == "" || password == "") {
+                        alert("Por favor, completa todos los campos");
+                        return false;
+                    }
+                    return true;
                 }
 
             </script>

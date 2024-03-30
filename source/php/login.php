@@ -14,8 +14,8 @@ if ($conn->connect_error) {
 }
 
 // Obtener el email y la contraseña del formulario
-$email = $_POST['email'];
-$password = $_POST['password'];
+$email = $_POST['emailLogin'];
+$password = $_POST['passwordLogin'];
 
 // Consulta SQL para verificar el email y la contraseña
 $sql = "SELECT * FROM usuario WHERE email = '$email' AND password = '$password'";

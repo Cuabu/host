@@ -2,23 +2,23 @@
 // Verificar si se recibieron los datos del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verificar si se han enviado todas las variables necesarias
-    if (isset($_POST["nombre"]) && isset($_POST["apellido"]) && isset($_POST["email"]) && isset($_POST["password"])) {
+    if (isset($_POST["nombre"]) && isset($_POST["apellido"]) && isset($_POST["emailRegister"]) && isset($_POST["passwordRegister"])) {
         // Obtener los datos del formulario
         $nombre = $_POST["nombre"];
         $apellido = $_POST["apellido"];
-        $email = $_POST["email"];
-        $password = $_POST["password"];
+        $email = $_POST["emailRegister"]; // Cambio aquí
+        $password = $_POST["passwordRegister"]; // Cambio aquí
 
         // Configuración de la conexión a la base de datos
         $host = "localhost";
-        $username = "root"; // Cambiar al nombre de usuario de tu base de datos
-        $password_db = ""; // Cambiar a la contraseña de tu base de datos
-        $database = "speed_store"; // Cambiar al nombre de tu base de datos
+        $username = "root"; 
+        $password_db = ""; 
+        $database = "speed_store"; 
 
         // Crear conexión a la base de datos
         $conn = new mysqli($host, $username, $password_db, $database);
 
-        // Verificar la conexión
+        // Verificacion de la conexión
         if ($conn->connect_error) {
             die("Error de conexión: " . $conn->connect_error);
         }
@@ -39,3 +39,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "No se recibieron todos los datos del formulario.";
     }
 }
+?>
