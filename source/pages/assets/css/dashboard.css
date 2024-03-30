@@ -38,7 +38,7 @@ body {
 }
 
 .alert-text {
-    color: #333;
+    color: #000000;
 }
 
 @keyframes slideText {
