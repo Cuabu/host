@@ -29,67 +29,67 @@
 
     <!-- Encabezado -->
     <header class="header">
+        <h1 class="text-center">Speed Store</h1>
         <div class="alert">
             <div class="container">
+                <a href="../pages/dashboard.html" class="logo">
+                    <img src="./assets/images/logo.png" alt="Logo Speed Store">
+                </a>
                 <p class="alert-text">¡Envío gratis en pedidos superiores a $200.000!</p>
-                <!-- Menú de navegación detallado -->
-                <div class="container mt-5">
-                    <div class="row">
-                        <!-- Botones para abrir las ventanas modales -->
-                        <div class="col-sm-3">
-                            <button type="button" class="btn btn-secondary" data-toggle="modal"
-                                data-target="#modalConsultar">
-                                Consultar Datos
-                            </button>
-                        </div>
-                        <div class="col-sm-3">
-                            <button type="button" class="btn btn-secondary" data-toggle="modal"
-                                data-target="#modalInsercion">
-                                Insertar Datos
-                            </button>
-                        </div>
-                        <div class="col-sm-3">
-                            <button type="button" class="btn btn-secondary" data-toggle="modal"
-                                data-target="#modalModificar">
-                                Modificar Datos
-                            </button>
-                        </div>
-                        <div class="col-sm-3">
-                            <button type="button" class="btn btn-secondary" data-toggle="modal"
-                                data-target="#modalEliminar">
-                                Eliminar Datos
-                            </button>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <button type="button" class="btn btn-secondary" data-toggle="modal"
-                                data-target="#modalRegistro">
-                                Registrar Tienda
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <!-- Botón de Cerrar Sesión -->
-                <a href="index.html" class="btn btn-secondary">Cerrar Sesión</a>
             </div>
-        </div>
-
-        <a href="../pages/dashboard.html" class="logo">
-            <img src="./assets/images/logo.png" alt="Logo Speed Store">
-        </a>
-        </div>
         </div>
     </header>
 
+    <!-- Barra lateral con botones -->
+    <div class="sidebar">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-sm-12">
+                    <button type="button" class="btn btn-secondary btn-block" data-toggle="modal"
+                        data-target="#modalConsultar">
+                        Consultar Producto
+                    </button>
+                </div>
+                <div class="col-sm-12 mt-2">
+                    <button type="button" class="btn btn-secondary btn-block" data-toggle="modal"
+                        data-target="#modalInsercion">
+                        Agregar Producto
+                    </button>
+                </div>
+                <div class="col-sm-12 mt-2">
+                    <button type="button" class="btn btn-secondary btn-block" data-toggle="modal"
+                        data-target="#modalModificar">
+                        Modificar Producto
+                    </button>
+                </div>
+                <div class="col-sm-12 mt-2">
+                    <button type="button" class="btn btn-secondary btn-block" data-toggle="modal"
+                        data-target="#modalEliminar">
+                        Eliminar Producto
+                    </button>
+                </div>
+                <div class="col-sm-12 mt-2">
+                    <button type="button" class="btn btn-secondary btn-block" data-toggle="modal"
+                        data-target="#modalRegistro">
+                        Registrar Tienda
+                    </button>
+                </div>
+                <div class="col-sm-12 mt-2">
+                    <a href="index.html" class="btn btn-secondary btn-block">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </header>
+
+    <!-- Ventana modal para el formulario de consulta -->
     <div class="modal fade" id="modalConsultar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Consultar Datos</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Consultar Producto</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -101,18 +101,12 @@
                             <label for="codigoConsulta">Nombre del Producto:</label>
                             <input type="text" class="form-control" id="codigoConsulta" name="codigoConsulta" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Consultar Por NOMBRE</button>
-                        <!-- Nuevo botón con evento click -->
-
+                        <button type="submit" class="btn btn-primary">Consultar por nombre</button>
                     </form>
 
                     <form id="formularioMisProductos" action="../php/mis_productos.php" method="post">
-                        <div class="form-group">
-
-                        </div>
-                        <button type="submit" class="btn btn-primary">Consultar Mis Productos</button>
-                        <!-- Nuevo botón con evento click -->
-
+                        <div class="form-group"></div>
+                        <button type="submit" class="btn btn-primary">Consultar mis productos</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -122,14 +116,13 @@
         </div>
     </div>
 
-
     <!-- Ventana modal para el formulario de inserción -->
     <div class="modal fade" id="modalInsercion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Insertar Datos</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar producto</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -154,7 +147,7 @@
                             <label for="imagen">Imagen:</label>
                             <input type="file" class="form-control" id="imagen" name="imagen" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Insertar</button>
+                        <button type="submit" class="btn btn-primary">Agregar</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -170,7 +163,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modificar Datos</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Modificar Producto</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -227,7 +220,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Eliminar Datos</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Eliminar Producto</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -276,7 +269,7 @@
                             <input type="text" class="form-control" id="telefono" name="telefono" required>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Insertar</button>
+                        <button type="submit" class="btn btn-primary">Registrar</button>
                     </form>
                 </div>
                 <div class="modal-footer">

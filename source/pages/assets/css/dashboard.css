@@ -11,6 +11,7 @@ body {
 }
 
 .container {
+    display: flex;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
@@ -21,46 +22,67 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px 0;
     position: relative;
+    overflow: hidden;
 }
 
 .alert {
     background-color: #f9f9f9;
     padding: 10px 0;
     text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    animation: slideText 20s linear infinite;
+    z-index: 1;
 }
 
 .alert-text {
     color: #333;
 }
 
-.nav {
-    display: flex;
-    justify-content: flex-start;
-    margin-top: 10px;
+@keyframes slideText {
+    0% { left: -100%; } /* Inicio de la animación */
+    100% { left: 100%; } /* Fin de la animación */
+}
+
+.header h1 {
+    position: relative;
+    z-index: 2;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    margin-top: 250px;
 }
 
 .nav-list {
     list-style-type: none;
-    display: flex;
+    padding: 0;
 }
 
 .nav-item {
-    margin-right: 20px;
+    margin-bottom: 10px;
 }
 
 .nav-item a {
     text-decoration: none;
-    color: #333;
+    color: #fff;
     font-weight: 600;
 }
 
 .btn {
-    display: inline-block;
+    display: block;
+    width: 100%;
     padding: 10px 20px;
     background-color: #4CAF50;
     color: white;
     text-decoration: none;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 .btn-secondary {
@@ -72,45 +94,12 @@ body {
     background-color: #45a049;
 }
 
-.input-wrapper {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-}
-
-.search-field {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.search-submit {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-}
-
 .logo img {
     max-width: 100%;
     height: auto;
 }
 
-
-style>.btn-secondary {
-    position: sticky;
-    top: 20px;
-    right: 20px;
-}
-
-.btn-secondary:hover,
-.btn-secondary:focus {
-    background-color: var(--black);
-    color: var(--white);
-}
-
-
-.btn-secondary:hover,
-.btn-secondary:focus {
-    background-color: var(--black);
-    color: var(--white);
+/* Estilos adicionales para los modales */
+.modal-dialog {
+    margin-top: 100px; /* Ajusta la posición vertical del modal */
 }
