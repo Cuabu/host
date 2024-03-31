@@ -1,0 +1,37 @@
+CREATE DATABASE speed_store;
+
+use speed_store;
+
+CREATE TABLE producto (
+    id_producto INT(10) AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    descripcion TEXT,
+    precio DECIMAL(10, 2) NOT NULL,
+    imagen MEDIUMBLOB,
+    fecha_creacion DATE
+);
+
+CREATE TABLE tienda (
+    id_tienda INT(10) AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    ubicacion VARCHAR(50),
+    telefono VARCHAR(20)
+);
+
+CREATE TABLE usuario (
+    id_usuario INT(10) AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50),
+    apellido VARCHAR(50),
+    email VARCHAR(50),
+    password VARCHAR(50)
+);
+
+CREATE TABLE compra (
+    id_compra INT(10) AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT,
+    id_producto INT,
+    fecha_compra DATE,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+    FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
+);
+
