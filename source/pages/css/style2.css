@@ -7,7 +7,79 @@
 
 /* Estilos para los botones en la barra lateral */
 .sidebar .btn {
-    width: 100%;
+    width: 16%;
+    /* Cambiado el ancho al 100% para que ocupen todo el espacio disponible */
     margin-bottom: 10px;
     text-align: left;
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Urbanist', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    padding: 20px 0;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    max-height: 50px;
+}
+
+.alert {
+    background-color: #ffc107;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.sidebar {
+    background-color: #343a40;
+    padding: 20px;
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* Estilos para las ventanas modales */
+.modal-header {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.modal-title {
+    color: #fff;
+}
+
+.modal-body,
+.modal-footer {
+    background-color: #f8f9fa;
+}
+
+.modal-footer button {
+    color: #007bff;
+}
+
+/* Estilos para el botón de cerrar sesión */
+.btn-logout {
+    margin-top: 10px;
+}
+
+/* Estilos para el formulario dentro de las ventanas modales */
+.modal-body form {
+    margin-bottom: 20px;
+}
+
+.modal-body .form-group {
+    margin-bottom: 15px;
 }

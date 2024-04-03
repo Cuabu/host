@@ -10,19 +10,15 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="./assets/images/icono.png" type="image/svg+xml">
 
-    <!-- Estilos CSS -->
+    <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/style2.css">
+
+    <link href="css/style2.css" rel="stylesheet">
+
 
     <!-- Fuentes de Google -->
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-
-    <!-- Precarga de imágenes -->
-    <link rel="preload" as="image" href="./assets/images/logo.png">
-    <link rel="preload" as="image" href="./assets/images/hero-banner-1.jpg">
-    <link rel="preload" as="image" href="./assets/images/hero-banner-2.jpg">
-    <link rel="preload" as="image" href="./assets/images/hero-banner-3.jpg">
 </head>
 
 <body id="top">
@@ -37,50 +33,40 @@
             </a>
             <div class="alert mt-3">
                 <p class="alert-text">¡Envío gratis en pedidos superiores a $200.000!</p>
-
+            </div>
+        </div>
     </header>
 
-    <!-- Barra lateral con botones -->
+    <!-- Barra lateral con menú desplegable -->
     <div class="sidebar">
         <div class="container mt-5">
             <div class="row">
                 <div class="col-sm-12">
-                    <button type="button" class="btn btn-secondary btn-block" data-toggle="modal"
-                        data-target="#modalConsultar">
-                        Consultar Producto
-                    </button>
-                </div>
-                <div class="col-sm-12 mt-2">
-                    <button type="button" class="btn btn-secondary btn-block" data-toggle="modal"
-                        data-target="#modalInsercion">
-                        Agregar Producto
-                    </button>
-                </div>
-                <div class="col-sm-12 mt-2">
-                    <button type="button" class="btn btn-secondary btn-block" data-toggle="modal"
-                        data-target="#modalModificar">
-                        Modificar Producto
-                    </button>
-                </div>
-                <div class="col-sm-12 mt-2">
-                    <button type="button" class="btn btn-secondary btn-block" data-toggle="modal"
-                        data-target="#modalEliminar">
-                        Eliminar Producto
-                    </button>
-                </div>
-                <div class="col-sm-12 mt-2">
-                    <button type="button" class="btn btn-secondary btn-block" data-toggle="modal"
-                        data-target="#modalRegistro">
-                        Registrar Tienda
-                    </button>
-                </div>
-                <div class="col-sm-12 mt-2">
-                    <a href="index.html" class="btn btn-secondary btn-block">Cerrar Sesión</a>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary btn-block dropdown-toggle" type="button"
+                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Operaciones
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <button class="dropdown-item" type="button" data-toggle="modal"
+                                data-target="#modalConsultar">Consultar Producto</button>
+                            <button class="dropdown-item" type="button" data-toggle="modal"
+                                data-target="#modalInsercion">Agregar Producto</button>
+                            <button class="dropdown-item" type="button" data-toggle="modal"
+                                data-target="#modalModificar">Modificar Producto</button>
+                            <button class="dropdown-item" type="button" data-toggle="modal"
+                                data-target="#modalEliminar">Eliminar Producto</button>
+                            <button class="dropdown-item" type="button" data-toggle="modal"
+                                data-target="#modalRegistro">Registrar Tienda</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Ventanas Modales -->
+    <!-- Agrega aquí tus ventanas modales -->
     <!-- Ventanas Modales -->
     <!-- Ventana modal para el formulario de consulta -->
     <div class="modal fade" id="modalConsultar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -271,17 +257,12 @@
                         <button type="submit" class="btn btn-primary">Registrar</button>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+                <!-- Scripts -->
+                <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
