@@ -1,0 +1,13 @@
+/* Estilos para el botón de cerrar sesión */
+.sidebar .btn-logout {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Estilos para los botones en la barra lateral */
+.sidebar .btn {
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: left;
+}
