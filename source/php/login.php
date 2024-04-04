@@ -22,7 +22,7 @@ if (isset($_POST['cerrar_sesion'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Speed Store Dashboard</title>
+    <title>Speed Store Mi Perfil</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="./assets/images/icono.png" type="image/svg+xml">
@@ -119,7 +119,6 @@ if (isset($_POST['cerrar_sesion'])) {
                             Menu
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <button class="dropdown-item" type="button" data-toggle="modal" data-target="#modalConsultar">Consultar Producto</button>
                             <button class="dropdown-item" type="button" data-toggle="modal" data-target="#modalInsercion">Agregar Producto</button>
                             <button class="dropdown-item" type="button" data-toggle="modal" data-target="#modalModificar">Modificar Producto</button>
                             <button class="dropdown-item" type="button" data-toggle="modal" data-target="#modalEliminar">Eliminar Producto</button>
@@ -143,38 +142,6 @@ if (isset($_POST['cerrar_sesion'])) {
 
 
     <!-- Ventanas Modales -->
-    <!-- Ventana modal para el formulario de consulta -->
-    <div class="modal fade" id="modalConsultar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Consultar Producto</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Formulario de consulta -->
-                    <form id="formularioConsulta" action="../php/consulta.php" method="post">
-                        <div class="form-group">
-                            <label for="codigoConsulta">Nombre del Producto:</label>
-                            <input type="text" class="form-control" id="codigoConsulta" name="codigoConsulta" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Consultar por nombre</button>
-                    </form>
-
-                    <form id="formularioMisProductos" action="../php/mis_productos.php" method="post">
-                        <div class="form-group"></div>
-                        <button type="submit" class="btn btn-primary">Consultar mis productos</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Ventana modal para el formulario de inserción -->
     <div class="modal fade" id="modalInsercion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -336,7 +303,6 @@ if (isset($_POST['cerrar_sesion'])) {
                 <th scope="col">Id</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Descripción</th>
-                <th scope="col">Acciones</th>
             </tr>
         </thead>
         <tbody id="tablaDatos">
