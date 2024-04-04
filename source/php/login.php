@@ -32,130 +32,8 @@ if (isset($_POST['cerrar_sesion'])) {
 
     <!-- Fuentes de Google -->
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="../pages/css/style2.css" rel="stylesheet">
 
-    <style>
-        /* Estilos para los mensajes */
-        .message-container {
-            float: right;
-            width: 50%;
-            margin: 0 auto;
-            text-align: center;
-            margin-top: 50px;
-            padding: 20px;
-            border-radius: 10px;
-            background-color: #f8f9fa;
-            border: 1px solid #ced4da;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            color: #212529;
-            position: relative;
-            overflow: hidden;
-        }
-
-
-
-        .message-container.success {
-            background-color: #d4edda;
-            border-color: #c3e6cb;
-            color: #155724;
-        }
-
-        .message-container.error {
-            background-color: #f8d7da;
-            border-color: #f5c6cb;
-            color: #721c24;
-        }
-
-        /* Estilos para la imagen */
-        .logo {
-            display: block;
-            margin: 0 auto;
-            margin-bottom: 20px;
-            width: 150px;
-            /* Ajusta el tamaño de la imagen según sea necesario */
-        }
-
-        /* Estilos para los modales */
-        .modal-header {
-            background-color: #007bff;
-            color: #fff;
-            padding: 15px;
-            border-bottom: 1px solid #dee2e6;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-        }
-
-        .modal-title {
-            margin: 0;
-        }
-
-        .modal-body {
-            padding: 20px;
-        }
-
-        .modal-footer {
-            padding: 15px;
-            border-top: 1px solid #dee2e6;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-        }
-
-        /* Estilos para los botones de cierre en los modales */
-        .close {
-            color: #fff;
-            opacity: 1;
-        }
-
-        .close:hover {
-            opacity: 0.75;
-        }
-
-        /* Estilos para los formularios dentro de los modales */
-        .modal-content form {
-            margin-bottom: 0;
-        }
-
-        /* Estilos adicionales para los botones en los modales */
-        .modal-content button[type="submit"] {
-            width: 100%;
-        }
-
-        /* Estilos adicionales para los campos de entrada en los formularios */
-        .modal-content input[type="text"],
-        .modal-content input[type="file"] {
-            width: calc(100% - 22px);
-            /* Ajustar el ancho del campo de entrada */
-            margin-bottom: 10px;
-        }
-
-        /* Estilos adicionales para los botones en los formularios */
-        .modal-content button[type="submit"] {
-            width: 100%;
-        }
-
-
-        /* Animación de las letras */
-        @keyframes move {
-            0% {
-                text-shadow: none;
-                transform: translateX(0);
-            }
-
-            50% {
-                text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-                transform: translateX(5px);
-            }
-
-            100% {
-                text-shadow: none;
-                transform: translateX(0);
-            }
-        }
-
-        .animated-text {
-            display: inline-block;
-            animation: move 1s infinite;
-        }
-    </style>
 </head>
 
 
@@ -190,6 +68,11 @@ if (isset($_POST['cerrar_sesion'])) {
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
+            // Obtener los datos del usuario
+            $row = $result->fetch_assoc();
+            $nombreUsuario = $row['nombre'];
+            $apellidoUsuario = $row['apellido'];
+
             // Generar un token de sesión único para el usuario
             $token = generarToken();
 
@@ -198,8 +81,8 @@ if (isset($_POST['cerrar_sesion'])) {
             setcookie('token', '', time() - 3600, "/");
 
 
-            echo "<img src='ruta/a/la/imagen.png' class='logo' alt='Logo'>";
-            echo "<div class='message-container success'><span class='animated-text'>Inicio de sesión exitoso!</span></div>";
+            echo "<img src='../pages/images/person-1.png' class='logo' alt='Logo'>";
+            echo "<div class='message-container success'><span class='animated-text'>Bienvenido! $nombreUsuario $apellidoUsuario </span></div>";
             // Mostrar el botón para cerrar sesión
             echo "<form method='post'><button type='submit' name='cerrar_sesion' class='btn btn-primary'>Cerrar sesión</button></form>";
             // Redireccionar al dashboard después de 2 horas y 46 minutos
@@ -210,7 +93,7 @@ if (isset($_POST['cerrar_sesion'])) {
                   </script>';
         } else {
             echo "<img src='ruta/a/la/imagen.png' class='logo' alt='Logo'>";
-            echo "<div class='message-container error'><span class='animated-text'>Iniciar Sesion Nuevamente.</span></div>";
+            echo "<div class='message-container error'><span class='animated-text'>Inicio de Sesion Incorrecto!</span></div>";
         }
 
         // Cerrar la conexión a la base de datos
@@ -220,28 +103,41 @@ if (isset($_POST['cerrar_sesion'])) {
 
     </div>
 
-
-    <!-- Barra lateral con menú desplegable -->
-    <div class="sidebar">
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Operaciones
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <!-- inicio Header/Nav -->
+    <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Speed navigation bar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Speed Store<span>.</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsFurni">
+                <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Menu
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <button class="dropdown-item" type="button" data-toggle="modal" data-target="#modalConsultar">Consultar Producto</button>
                             <button class="dropdown-item" type="button" data-toggle="modal" data-target="#modalInsercion">Agregar Producto</button>
                             <button class="dropdown-item" type="button" data-toggle="modal" data-target="#modalModificar">Modificar Producto</button>
                             <button class="dropdown-item" type="button" data-toggle="modal" data-target="#modalEliminar">Eliminar Producto</button>
                             <button class="dropdown-item" type="button" data-toggle="modal" data-target="#modalRegistro">Registrar Tienda</button>
                         </div>
-                    </div>
-                </div>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <!-- Barra lateral con menú desplegable -->
+
+                </ul>
             </div>
         </div>
-    </div>
+    </nav>
+    <!-- Fin del Header/Nav -->
+
+
+
+
 
 
     <!-- Ventanas Modales -->
@@ -425,22 +321,69 @@ if (isset($_POST['cerrar_sesion'])) {
                         <button type="submit" class="btn btn-primary">Registrar</button>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<div class="container">
+    <div class="nuevo">
+        <div class="formproducts">
+            <input type="text" name="nombre" class="nombre" placeholder="nombre">
+            <textarea cols="30" rows="10" placeholder="descripcion" name="descripcion" class="descripcion"></textarea>
+            <div class="botonescon">
+                <div class="botonesformulario">
+                    <button class="botonnuevoguardar">Guardar</button>
+                    <button class="botonnuevocancelar">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="newpro"></div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Acción</th>
+            </tr>
+        </thead>
+        <tbody id="trpro"></tbody>
+    </table>
+
+    <div>
+        <button class="botonnuevo">Nuevo</button>
+    </div>
+</div>
 
 
+<!--footer aqui-->
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container text-center">
+        <span class="text-muted">© 2024 Speed Store. Todos los derechos reservados.</span>
+    </div>
+</footer>
 
-                <!-- Scripts -->
-                <!-- Verificación de autenticación y script JavaScript para evitar retroceso -->
-                <script>
-                    // Deshabilitar el botón de retroceso del navegador después de cerrar sesión
-                    window.history.pushState(null, document.title, window.location.href);
-                    window.addEventListener('popstate', function(event) {
-                        window.history.pushState(null, document.title, window.location.href);
-                    });
-                </script>
 
-                <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-                <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Scripts -->
+<!-- Verificación de autenticación y script JavaScript para evitar retroceso -->
+<script>
+    // Deshabilitar el botón de retroceso del navegador después de cerrar sesión
+    window.history.pushState(null, document.title, window.location.href);
+    window.addEventListener('popstate', function(event) {
+        window.history.pushState(null, document.title, window.location.href);
+    });
+</script>
+
+<script src="../pages/js/login.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

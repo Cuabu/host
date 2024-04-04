@@ -1,85 +1,286 @@
-/* Estilos para el botón de cerrar sesión */
-.sidebar .btn-logout {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-/* Estilos para los botones en la barra lateral */
-.sidebar .btn {
-    width: 16%;
-    /* Cambiado el ancho al 100% para que ocupen todo el espacio disponible */
-    margin-bottom: 10px;
-    text-align: left;
-}
-
-/* Estilos generales */
-body {
-    font-family: 'Urbanist', sans-serif;
-    background-color: #f8f9fa;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.header {
-    padding: 20px 0;
-    border-bottom: 1px solid #dee2e6;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo img {
-    max-height: 50px;
-}
-
-.alert {
-    background-color: #ffc107;
-    color: #333;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 20px;
-}
-
-.sidebar {
-    background-color: #343a40;
+/* Estilos para los mensajes */
+.message-container {
+    float: center;
+    width: auto;
+    margin: 0px;
+    text-align: center;
+    margin-top: 0px;
     padding: 20px;
-    color: #fff;
-    min-height: 100vh;
+    border-radius: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #212529;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Estilos para las ventanas modales */
+.message-container.success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.message-container.error {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+/* Estilos para la imagen */
+.logo {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: 150px;
+    /* Ajusta el tamaño de la imagen según sea necesario */
+}
+
+/* Estilos para los modales */
 .modal-header {
     background-color: #007bff;
     color: #fff;
+    padding: 15px;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .modal-title {
+    margin: 0;
+}
+
+.btn-block {
+    display: block;
+    width: auto;
     color: #fff;
+    background-color: #1b5b9b;
+    border-color: #4e555b;
 }
 
-.modal-body,
+.btn-primary {
+    float: right;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
 .modal-footer {
-    background-color: #f8f9fa;
+    padding: 15px;
+    border-top: 1px solid #dee2e6;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
-.modal-footer button {
-    color: #007bff;
+/* Estilos para los botones de cierre en los modales */
+.close {
+    color: #fff;
+    opacity: 1;
 }
 
-/* Estilos para el botón de cerrar sesión */
-.btn-logout {
-    margin-top: 10px;
+.close:hover {
+    opacity: 0.75;
 }
 
-/* Estilos para el formulario dentro de las ventanas modales */
-.modal-body form {
+/* Estilos para los formularios dentro de los modales */
+.modal-content form {
+    margin-bottom: 0;
+}
+
+/* Estilos adicionales para los botones en los modales */
+.modal-content button {
+    width: 20%;
+}
+
+
+/* Estilos adicionales para los campos de entrada en los formularios */
+.modal-content input[type="text"],
+.modal-content input[type="file"] {
+    width: calc(100% - 22px);
+    /* Ajustar el ancho del campo de entrada */
+    margin-bottom: 10px;
+}
+
+
+
+
+/* Animación de las letras */
+@keyframes move {
+    0% {
+        text-shadow: none;
+        transform: translateX(0);
+    }
+
+    50% {
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        transform: translateX(5px);
+    }
+
+    100% {
+        text-shadow: none;
+        transform: translateX(0);
+    }
+}
+
+.animated-text {
+    display: inline-block;
+    animation: move 1s infinite;
+}
+
+
+@media (min-width: 1000px) {
+    .navbar-expand-md .navbar-nav {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 768px) {
+    .mb-md-0 {
+        margin-bottom: 0 !important;
+    }
+}
+
+.ms-auto {
+    margin-left: auto !important;
+}
+
+
+
+.navbar-nav {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+}
+
+
+ul {
+    margin-top: 0;
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+.bg-dark {
+    --bs-bg-opacity: 1;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    line-height: 28px;
+    color: #6a6a6a;
+    font-size: 14px;
+}
+
+body {
+    text-align: var(--bs-body-text-align);
+}
+
+:host,
+:root {
+    --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+}
+
+:host,
+:root {
+    --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+}
+
+:host,
+:root {
+    --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.nuevo {
     margin-bottom: 20px;
 }
 
-.modal-body .form-group {
-    margin-bottom: 15px;
+.formproducts {
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.botonescon {
+    text-align: right;
+}
+
+.botonnuevoguardar,
+.botonnuevocancelar,
+.botonnuevo {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.botonnuevoguardar:hover,
+.botonnuevocancelar:hover,
+.botonnuevo:hover {
+    background-color: #0056b3;
+}
+
+.newpro {
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.botonnuevo {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.botonnuevo:hover {
+    background-color: #218838;
 }
