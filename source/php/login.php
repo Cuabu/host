@@ -93,11 +93,8 @@ if (isset($_POST['cerrar_sesion'])) {
                   </script>';
         } else {
             echo "<img src='ruta/a/la/imagen.png' class='logo' alt='Logo'>";
-            echo "<div class='message-container error'>¡Inicio de Sesión Incorrecto! <button onclick='window.location.href=\"../pages/login.php\"' class='btn btn-danger'>Intentar de nuevo</button></div>";
             echo '<script>
-                    setTimeout(function() {
-                        window.location.href = "../pages/fail.html";
-                    }, 0); // 
+            window.location.href = "../pages/fail.html";
                   </script>';
         }
 
