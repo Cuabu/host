@@ -125,7 +125,7 @@ if (isset($_POST['cerrar_sesion'])) {
                         </div>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Inicio</a>
+                        <a class="nav-link" href="../pages/formulario.html">Inicio</a>
                     </li>
                     <!-- Barra lateral con menú desplegable -->
 
@@ -326,39 +326,36 @@ if (isset($_POST['cerrar_sesion'])) {
     </div>
 </body>
 
-<div class="container">
-    <div class="nuevo">
-        <div class="formproducts">
-            <input type="text" name="nombre" class="nombre" placeholder="nombre">
-            <textarea cols="30" rows="10" placeholder="descripcion" name="descripcion" class="descripcion"></textarea>
-            <div class="botonescon">
-                <div class="botonesformulario">
-                    <button class="botonnuevoguardar">Guardar</button>
-                    <button class="botonnuevocancelar">Cancelar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+<body>
+    <form id="formulario" method="post" action="index.js">
+        <h1>Ingrese los datos</h1>
 
-    <div class="newpro"></div>
+        <label for="nombre">Nombre: </label>
+        <input type="text" class="form-control" name="nombre" id="nombre" value="" required>
+        <p>
+            <label for="Textarea">Descripción:</label>
+        <p>
+            <textarea id="Textarea" name="descripcion" rows="4" cols="10" required></textarea>
+        <p>
+            <input type="hidden" id="id" name="id">
+            <input type="submit" value="agregar">
+            <input type="reset" value="cancelar">
+    </form>
 
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">ID</th>
+                <th scope="col">Id</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Descripción</th>
-                <th scope="col">Acción</th>
+                <th scope="col">Acciones</th>
             </tr>
         </thead>
-        <tbody id="trpro"></tbody>
+        <tbody id="tablaDatos">
+
+        </tbody>
     </table>
-
-    <div>
-        <button class="botonnuevo">Nuevo</button>
-    </div>
-</div>
-
+</body>
 
 <!--footer aqui-->
 <footer class="footer mt-auto py-3 bg-light">

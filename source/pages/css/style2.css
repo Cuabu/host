@@ -208,36 +208,41 @@ body {
     --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.nuevo {
+#formulario {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+h1 {
+    text-align: center;
     margin-bottom: 20px;
 }
 
-.formproducts {
-    background-color: #f0f0f0;
-    padding: 20px;
+label {
+    font-weight: bold;
 }
 
 input[type="text"],
 textarea {
     width: 100%;
-    margin-bottom: 10px;
     padding: 10px;
+    margin-bottom: 10px;
     box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.botonescon {
-    text-align: right;
-}
-
-.botonnuevoguardar,
-.botonnuevocancelar,
-.botonnuevo {
+input[type="submit"],
+input[type="reset"] {
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
@@ -246,41 +251,28 @@ textarea {
     cursor: pointer;
 }
 
-.botonnuevoguardar:hover,
-.botonnuevocancelar:hover,
-.botonnuevo:hover {
+input[type="submit"]:hover,
+input[type="reset"]:hover {
     background-color: #0056b3;
 }
 
-.newpro {
-    margin-bottom: 20px;
-}
-
-table {
-    width: 100%;
+.table {
+    width: 80%;
+    margin: 50px auto;
     border-collapse: collapse;
 }
 
-th,
-td {
+.table th,
+.table td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
 }
 
-th {
+.table th {
     background-color: #f2f2f2;
 }
 
-.botonnuevo {
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.botonnuevo:hover {
-    background-color: #218838;
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
 }
