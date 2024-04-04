@@ -429,7 +429,14 @@
 	</footer>
 	<!-- final Footer Section -->
 
-
+	<script>
+		// Manipular el historial del navegador
+		window.history.pushState(null, "", window.location.href);
+		window.onpopstate = function (event) {
+			// Cuando se detecta un intento de retroceder en el historial, se vuelve a redirigir a la misma página
+			window.history.pushState(null, "", window.location.href);
+		};
+	</script>
 	<script src="js/bootstrap.bundle.min.js"></script>
 	<script src="js/tiny-slider.js"></script>
 	<script src="js/custom.js"></script>

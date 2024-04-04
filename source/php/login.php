@@ -329,20 +329,6 @@ if (isset($_POST['cerrar_sesion'])) {
 </body>
 
 <body>
-    <form id="formulario" method="post" action="index.js">
-        <h1>Ingrese los datos</h1>
-
-        <label for="nombre">Nombre: </label>
-        <input type="text" class="form-control" name="nombre" id="nombre" value="" required>
-        <p>
-            <label for="Textarea">Descripción:</label>
-        <p>
-            <textarea id="Textarea" name="descripcion" rows="4" cols="10" required></textarea>
-        <p>
-            <input type="hidden" id="id" name="id">
-            <input type="submit" value="agregar">
-            <input type="reset" value="cancelar">
-    </form>
 
     <table class="table table-striped">
         <thead>
@@ -369,6 +355,11 @@ if (isset($_POST['cerrar_sesion'])) {
 
 <!-- Scripts -->
 <!-- Verificación de autenticación y script JavaScript para evitar retroceso -->
+<script src="../pages/js/login.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     // Deshabilitar el botón de retroceso del navegador después de cerrar sesión
     window.history.pushState(null, document.title, window.location.href);
@@ -377,11 +368,6 @@ if (isset($_POST['cerrar_sesion'])) {
     });
 </script>
 
-<script src="../pages/js/login.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 

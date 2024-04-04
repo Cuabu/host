@@ -81,8 +81,8 @@
                         </div>
                         <div class="input-box">
                             <label for="apellido">Apellido:</label>
-                            <input type="text" class="input-field" name="apellido" id="apellido"
-                                placeholder="Apellido" required>
+                            <input type="text" class="input-field" name="apellido" id="apellido" placeholder="Apellido"
+                                required>
                             <i class="bx bx-user"></i>
                         </div>
                     </div>
@@ -103,68 +103,79 @@
                     </div>
                 </form>
             </div>
-
-
-            <script>
-
-                function myMenuFunction() {
-                    var i = document.getElementById("navMenu");
-
-                    if (i.className === "nav-menu") {
-                        i.className += " responsive";
-                    } else {
-                        i.className = "nav-menu";
-                    }
-                }
-
-                function login() {
-                    var a = document.getElementById("loginBtn");
-                    var b = document.getElementById("registerBtn");
-                    var x = document.getElementById("login");
-                    var y = document.getElementById("register");
-
-                    x.style.left = "4px";
-                    y.style.right = "-520px";
-                    a.className += " white-btn";
-                    b.className = "btn";
-                    x.style.opacity = 1;
-                    y.style.opacity = 0;
-                }
-
-                function register() {
-                    var a = document.getElementById("loginBtn");
-                    var b = document.getElementById("registerBtn");
-                    var x = document.getElementById("login");
-                    var y = document.getElementById("register");
-
-                    x.style.left = "-510px";
-                    y.style.right = "5px";
-                    a.className = "btn";
-                    b.className += " white-btn";
-                    x.style.opacity = 0;
-                    y.style.opacity = 1;
-                }
-
-                function validateForm() {
-                    var nombre = document.getElementById("nombre").value;
-                    var apellido = document.getElementById("apellido").value;
-                    var email = document.getElementById("emailRegister").value;
-                    var password = document.getElementById("passwordRegister").value;
-
-                    console.log("Nombre:", nombre);
-                    console.log("Apellido:", apellido);
-                    console.log("Email:", email);
-                    console.log("Contraseña:", password);
-
-                    if (nombre == "" || apellido == "" || email == "" || password == "") {
-                        alert("Por favor, completa todos los campos");
-                        return false;
-                    }
-                    return true;
-                }
-
-            </script>
-
 </body>
+
+
+<script>
+
+    function myMenuFunction() {
+        var i = document.getElementById("navMenu");
+
+        if (i.className === "nav-menu") {
+            i.className += " responsive";
+        } else {
+            i.className = "nav-menu";
+        }
+    }
+
+    function login() {
+        var a = document.getElementById("loginBtn");
+        var b = document.getElementById("registerBtn");
+        var x = document.getElementById("login");
+        var y = document.getElementById("register");
+
+        x.style.left = "4px";
+        y.style.right = "-520px";
+        a.className += " white-btn";
+        b.className = "btn";
+        x.style.opacity = 1;
+        y.style.opacity = 0;
+    }
+
+    function register() {
+        var a = document.getElementById("loginBtn");
+        var b = document.getElementById("registerBtn");
+        var x = document.getElementById("login");
+        var y = document.getElementById("register");
+
+        x.style.left = "-510px";
+        y.style.right = "5px";
+        a.className = "btn";
+        b.className += " white-btn";
+        x.style.opacity = 0;
+        y.style.opacity = 1;
+    }
+
+    function validateForm() {
+        var nombre = document.getElementById("nombre").value;
+        var apellido = document.getElementById("apellido").value;
+        var email = document.getElementById("emailRegister").value;
+        var password = document.getElementById("passwordRegister").value;
+
+        console.log("Nombre:", nombre);
+        console.log("Apellido:", apellido);
+        console.log("Email:", email);
+        console.log("Contraseña:", password);
+
+        if (nombre == "" || apellido == "" || email == "" || password == "") {
+            alert("Por favor, completa todos los campos");
+            return false;
+        }
+        return true;
+    }
+
+</script>
+<script>
+    // Manipular el historial del navegador
+    window.history.pushState(null, "", window.location.href);
+    window.onpopstate = function (event) {
+        // Cuando se detecta un intento de retroceder en el historial, se vuelve a redirigir a la misma página
+        window.history.pushState(null, "", window.location.href);
+    };
+</script>
+
+
+
+
 
 </html>
