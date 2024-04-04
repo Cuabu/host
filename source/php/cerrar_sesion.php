@@ -9,7 +9,7 @@ session_unset();
 session_destroy();
 
 // Redirigir al usuario a la página de inicio de sesión u otra página deseada
-header("Location: ../pages/formulario.html");
+header("Location: ../pages/index.html");
 // Evitar que el navegador almacene en caché la página
 header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
 header("Pragma: no-cache"); // HTTP 1.0.
