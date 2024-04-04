@@ -35,11 +35,17 @@
 							<a class="nav-link" href="index.html">Inicio</a>
 						</li>
 						<li><a class="nav-link" href="shop.html">Tienda</a></li>
+<<<<<<< HEAD
+						<li><a class="nav-link" href="about.html">Sobre nosotros</a></li>
+						<li><a class="nav-link" href="services.html">Servicios</a></li>
+		
+=======
+>>>>>>> 2d71371eefa238862a60311c66e1903e6f4b3d77
 						<li class="active"><a class="nav-link" href="contact.html">Contáctanos</a></li>
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
+						<li><a class="nav-link" href="./images/logo.png"><img src="images/user.svg"></a></li>
 						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
 					</ul>
 				</div>
@@ -59,7 +65,7 @@
 						</div>
 						<div class="col-lg-7">
 							<div class="hero-img-wrap">
-								<img src="images/couch.png" class="img-fluid">
+								<img src="./images/logo.png" class="img-fluid">
 							</div>
 						</div>
 					</div>
@@ -101,7 +107,7 @@
                       </svg>
                     </div> <!-- /.icon -->
                     <div class="service-contents">
-                      <p>brayan_vallecilla@soy.sena.edu.co</p>
+                      <p>brayanvallecilla58@gmail.com</p>
                     </div> <!-- /.service-contents-->
                   </div> <!-- /.service -->
                 </div>
@@ -120,32 +126,34 @@
                 </div>
               </div>
 
-              <form>
+              <form action="https://formsubmit.co/brayanvallecilla58@gmail.com" method="post">
                 <div class="row">
                   <div class="col-6">
                     <div class="form-group">
                       <label class="text-black" for="fname">Nombre</label>
-                      <input type="text" class="form-control" id="fname">
+                      <input type="text" class="form-control" id="fname" name="Nombre">
                     </div>
                   </div>
                   <div class="col-6">
                     <div class="form-group">
                       <label class="text-black" for="lname">Apellido</label>
-                      <input type="text" class="form-control" id="lname">
+                      <input type="text" class="form-control" id="lname" name="Apellido">
                     </div>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="text-black" for="email">Correo Electrónico</label>
-                  <input type="email" class="form-control" id="email">
+                  <input type="email" class="form-control" id="email" name="email">
                 </div>
 
                 <div class="form-group mb-5">
                   <label class="text-black" for="message">Mensaje</label>
-                  <textarea name="" class="form-control" id="message" cols="30" rows="5"></textarea>
+                  <textarea name="Mensaje" class="form-control" id="message" cols="30" rows="5"></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary-hover-outline">Enviar Mensaje</button>
+				<input type="hidden" name="_next" value="http://localhost/host/source/pages/contact.html">
+				<input type="hidden" name="_captcha" value="false">
               </form>
 
             </div>
