@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Store Dashboard</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./assets/images/icono.png" type="image/svg+xml">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Fuentes de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="../pages/css/style2.css" rel="stylesheet">
+
+</head>
+
+
+
+<body id="top">
+
+    echo "<div class='message-container error'>¡Inicio de Sesión Incorrecto! <button
+            onclick='window.location.href=\"../pages/login.php\"' class='btn btn-danger'>Intentar de nuevo</button>
+    </div>";
+
+    <!-- Mensaje de inicio de sesión -->
+    <div class="message-container">
+
+
+    </div>
+
+    <!-- inicio Header/Nav -->
+    <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Speed navigation bar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Speed Store<span>.</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni"
+                aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </div>
+    </nav>
+    <!-- Fin del Header/Nav -->
+
+    <!--footer aqui-->
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container text-center">
+            <span class="text-muted">© 2024 Speed Store. Todos los derechos reservados.</span>
+        </div>
+    </footer>
+
+
+    <!-- Scripts -->
+    <!-- Verificación de autenticación y script JavaScript para evitar retroceso -->
+    <script>
+    echo "<div class='message-container error'>¡Inicio de Sesión Incorrecto! <button onclick='window.location.href=\"../pages/login.php\"' class='btn btn-danger'>Intentar de nuevo</button></div>";
+
+    </script>
+
+
+    <script>
+        // Deshabilitar el botón de retroceso del navegador después de cerrar sesión
+        window.history.pushState(null, document.title, window.location.href);
+        window.addEventListener('popstate', function (event) {
+            window.history.pushState(null, document.title, window.location.href);
+        });
+    </script>
+
+    <script src="../pages/js/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
