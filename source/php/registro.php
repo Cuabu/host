@@ -28,8 +28,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombre"]) && !empty($
 
     // Ejecutar la consulta
     if ($conn->query($sql) === TRUE) {
-        // Redireccionar a otra página después de un registro exitoso
-        header("Location: ../pages/formulario.html");
+        // Mostrar un mensaje de registro exitoso con Bootstrap
+        echo '
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="alert alert-success mt-3" role="alert">
+                            ¡Registro exitoso! Serás redirigido en 1 segundo.
+                        </div>
+                    </div>
+                </div>
+            </div>';
+
+        // Redireccionar a otra página después de un registro exitoso después de 3 segundos
+        header("refresh:2;url=../pages/formulario.html");
         exit(); // Detener la ejecución del script después de redirigir
     } else {
         // Mostrar un mensaje de error si no se pueden registrar los datos
@@ -40,5 +52,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombre"]) && !empty($
     $conn->close();
 } else {
     // Mostrar un mensaje si no se recibieron todos los datos del formulario o están vacíos
-    echo "No se recibieron todos los datos del formulario o están vacíos.";
+    echo '<div class="container">
+              <div class="row justify-content-center">
+                  <div class="col-md-6">
+                      <div class="alert alert-danger mt-3" role="alert">
+                          No se recibieron todos los datos del formulario o están vacíos.
+                      </div>
+                  </div>
+              </div>
+          </div>';
 }
