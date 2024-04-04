@@ -2,12 +2,12 @@
 session_start(); // Iniciar sesión
 
 // Verificar si se recibieron los datos del formulario y si no están vacíos
-if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombre"]) && !empty($_POST["apellido"]) && !empty($_POST["email"]) && !empty($_POST["password"])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombre"]) && !empty($_POST["apellido"]) && !empty($_POST["emailRegister"]) && !empty($_POST["passwordRegister"])) {
     // Obtener los datos del formulario
     $nombre = $_POST["nombre"];
     $apellido = $_POST["apellido"];
-    $email = $_POST["email"];
-    $password = $_POST["password"];
+    $email = $_POST["emailRegister"];
+    $password = $_POST["passwordRegister"];
 
     // Configuración de la conexión a la base de datos
     $host = "localhost";
@@ -28,14 +28,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombre"]) && !empty($
 
     // Ejecutar la consulta
     if ($conn->query($sql) === TRUE) {
-        echo "Registro de usuario exitoso!";
+        // Redireccionar a otra página después de un registro exitoso
+        header("Location: ../pages/formulario.html");
+        exit(); // Detener la ejecución del script después de redirigir
     } else {
+        // Mostrar un mensaje de error si no se pueden registrar los datos
         echo "Error al registrar usuario: " . $conn->error;
     }
 
     // Cerrar la conexión
     $conn->close();
 } else {
+    // Mostrar un mensaje si no se recibieron todos los datos del formulario o están vacíos
     echo "No se recibieron todos los datos del formulario o están vacíos.";
 }
-?>
