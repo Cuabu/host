@@ -37,9 +37,6 @@
             <a class="nav-link" href="index.html">Inicio</a>
           </li>
           <li><a class="nav-link" href="shop.html">Tienda</a></li>
-          <li><a class="nav-link" href="about.html">Sobre Nosotros</a></li>
-          <li><a class="nav-link" href="services.html">Servicios</a></li>
-          <li><a class="nav-link" href="blog.html">Blog</a></li>
           <li><a class="nav-link" href="contact.html">Contactanos</a></li>
         </ul>
 
@@ -95,7 +92,7 @@
                   <td class="product-name">
                     <h2 class="h5 text-black">silla taburete</h2>
                   </td>
-                  <td>$65.000</td>
+                  <td class="product-price">$65.000</td>
                   <td>
                     <div class="input-group mb-3 d-flex align-items-center quantity-container"
                       style="max-width: 120px;">
@@ -108,12 +105,10 @@
                         <button class="btn btn-outline-black increase" type="button">&plus;</button>
                       </div>
                     </div>
-
                   </td>
-                  <td>$65.000</td>
+                  <td class="product-total">$65.000</td>
                   <td><button class="btn btn-black btn-sm remove-product">Eliminar</button></td>
                 </tr>
-
                 <tr>
                   <td class="product-thumbnail">
                     <img src="images/product-2.png" alt="Image" class="img-fluid">
@@ -121,7 +116,7 @@
                   <td class="product-name">
                     <h2 class="h5 text-black">butaca</h2>
                   </td>
-                  <td>$95.000</td>
+                  <td class="product-price">$95.000</td>
                   <td>
                     <div class="input-group mb-3 d-flex align-items-center quantity-container"
                       style="max-width: 120px;">
@@ -134,9 +129,8 @@
                         <button class="btn btn-outline-black increase" type="button">&plus;</button>
                       </div>
                     </div>
-
                   </td>
-                  <td>$95.000</td>
+                  <td class="product-total">$95.000</td>
                   <td><button class="btn btn-black btn-sm remove-product">Eliminar</button></td>
                 </tr>
               </tbody>
@@ -144,20 +138,18 @@
           </div>
         </form>
       </div>
-
       <div class="row">
         <div class="col-md-6">
           <div class="row mb-5">
             <div class="col-md-6 mb-3 mb-md-0">
-              <button class="btn btn-black btn-sm btn-block">Actualizar Carrito</button>
+              <div class="col-md-6 mb-3 mb-md-0">
+                <button class="btn btn-black btn-sm btn-block" onclick="reloadPage()">Actualizar Carrito</button>
+              </div>
             </div>
             <div class="col-md-6">
-              <!-- Cambiar el enlace del botón para que apunte a shop -->
               <a href="shop.html" class="btn btn-outline-black btn-sm btn-block">Continuar Comprando</a>
-
             </div>
           </div>
-
         </div>
         <div class="col-md-6 pl-5">
           <div class="row justify-content-end">
@@ -172,7 +164,7 @@
                   <span class="text-black">Subtotal</span>
                 </div>
                 <div class="col-md-6 text-right">
-                  <strong class="text-black">$230.000</strong>
+                  <strong class="text-black" id="subtotal">$160.000</strong>
                 </div>
               </div>
               <div class="row mb-5">
@@ -180,10 +172,9 @@
                   <span class="text-black">Total</span>
                 </div>
                 <div class="col-md-6 text-right">
-                  <strong class="text-black">$230.00</strong>
+                  <strong class="text-black" id="total">$160.000</strong>
                 </div>
               </div>
-
               <div class="row">
                 <div class="col-md-12">
                   <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='checkout.html'">Proceder
@@ -194,8 +185,92 @@
           </div>
         </div>
       </div>
+
+      <!-- Pedido -->
+      <div class="row mb-5">
+        <div class="col-md-12">
+          <h2 class="h3 mb-3 text-black">Tu Pedido</h2>
+          <div class="p-3 p-lg-5 border bg-white">
+            <table class="table site-block-order-table mb-5">
+              <thead>
+                <th>Producto</th>
+                <th>Total</th>
+              </thead>
+              <tbody id="pedido-body">
+                <!-- Aquí se añadirán las filas de productos -->
+              </tbody>
+            </table>
+            <div class="form-group">
+              <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='thankyou.html'">Realizar
+                Pedido</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Fin del Pedido -->
+
     </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Function to calculate subtotal and total
+      function calculateTotal() {
+        let subtotal = 0;
+        const productRows = document.querySelectorAll('#cart-table tbody tr');
+        const pedidoBody = document.getElementById('pedido-body');
+        pedidoBody.innerHTML = ''; // Limpiar el contenido del pedido
+        productRows.forEach(row => {
+          const productName = row.querySelector('.product-name h2').textContent.trim();
+          const price = parseFloat(row.querySelector('.product-price').textContent.replace('$', '').replace(',', ''));
+          const quantity = parseInt(row.querySelector('.quantity-amount').value);
+          const total = price * quantity;
+          row.querySelector('.product-total').textContent = '$' + total.toFixed(3);
+          subtotal += total;
+
+          // Agregar fila al pedido
+          const pedidoRow = document.createElement('tr');
+          pedidoRow.innerHTML = `
+            <td>${productName} <strong class="mx-2">x</strong> ${quantity}</td>
+            <td>$${total.toFixed(3)}</td>
+          `;
+          pedidoBody.appendChild(pedidoRow);
+        });
+        document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(3);
+        document.getElementById('total').textContent = '$' + subtotal.toFixed(2); // Assuming it's subtotal for now
+      }
+
+      // Attach event listeners for quantity change
+      const quantityInputs = document.querySelectorAll('.quantity-amount');
+      quantityInputs.forEach(input => {
+        input.addEventListener('change', calculateTotal);
+      });
+
+      // Attach event listener for remove product button
+      const removeButtons = document.querySelectorAll('.remove-product');
+      removeButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          const row = this.closest('tr');
+          const price = parseFloat(row.querySelector('.product-price').textContent.replace('$', '').replace(',', ''));
+          const quantity = parseInt(row.querySelector('.quantity-amount').value);
+          const total = price * quantity;
+          const subtotalElement = document.getElementById('subtotal');
+          const totalElement = document.getElementById('total');
+          const currentSubtotal = parseFloat(subtotalElement.textContent.replace('$', '').replace(',', ''));
+          const newSubtotal = currentSubtotal - total;
+          subtotalElement.textContent = '$' + newSubtotal.toFixed(3);
+          totalElement.textContent = '$' + newSubtotal.toFixed(2); // Assuming it's subtotal for now
+          row.remove();
+
+          // Actualizar el pedido después de eliminar un producto
+          calculateTotal();
+        });
+      });
+
+      // Initial calculation
+      calculateTotal();
+    });
+  </script>
 
   <!-- inicio Footer Section -->
   <footer class="footer-section">
@@ -287,6 +362,18 @@
       });
     });
   </script>
+  <script>
+    // Función para recargar la página
+    function reloadPage() {
+      location.reload();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      // Resto de tu código aquí...
+    });
+  </script>
+
+
 </body>
 
 </html>

@@ -61,7 +61,7 @@ if (isset($_POST['codigoConsulta'])) {
     $codigoConsulta = $conn->real_escape_string($_POST['codigoConsulta']);
 
     // Consulta SQL para seleccionar el producto por su código
-    $sql = "SELECT * FROM producto WHERE nombre = '$codigoConsulta'";
+    $sql = "SELECT * FROM producto WHERE id_producto = '$codigoConsulta'";
 
     // Ejecutar la consulta
     $result = $conn->query($sql);

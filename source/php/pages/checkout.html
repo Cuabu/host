@@ -144,20 +144,105 @@
 
 							<br>
 
-							<div class="form-group">
-								<button class="btn btn-black btn-lg py-3 btn-block"
-									onclick="window.location='thankyou.html'">Realizar Pedido</button>
+							<!-- Pedido -->
+							<div class="row mb-5">
+								<div class="col-md-12">
+									<h2 class="h3 mb-3 text-black">Tu Pedido</h2>
+									<div class="p-3 p-lg-5 border bg-white">
+										<table class="table site-block-order-table mb-5">
+											<thead>
+												<th>Producto</th>
+												<th>Total</th>
+											</thead>
+											<tbody id="pedido-body">
+												<!-- Aquí se añadirán las filas de productos -->
+											</tbody>
+										</table>
+										<div class="form-group">
+											<button class="btn btn-black btn-lg py-3 btn-block"
+												onclick="window.location='thankyou.html'">Realizar Pedido</button>
+										</div>
+									</div>
+								</div>
 							</div>
+							<!-- Fin del Pedido -->
 
 						</div>
 					</div>
-			</form>
 
-			<div class="col-md-6">
+					<script>
+						document.addEventListener('DOMContentLoaded', function () {
+							// Function to calculate subtotal and total
+							function calculateTotal() {
+								let subtotal = 0;
+								const productRows = document.querySelectorAll('#cart-table tbody tr');
+								const pedidoBody = document.getElementById('pedido-body');
+								pedidoBody.innerHTML = ''; // Limpiar el contenido del pedido
+								productRows.forEach(row => {
+									const productName = row.querySelector('.product-name h2').textContent.trim();
+									const price = parseFloat(row.querySelector('.product-price').textContent.replace('$', '').replace(',', ''));
+									const quantity = parseInt(row.querySelector('.quantity-amount').value);
+									const total = price * quantity;
+									row.querySelector('.product-total').textContent = '$' + total.toFixed(3);
+									subtotal += total;
 
-			</div>
+									// Agregar fila al pedido
+									const pedidoRow = document.createElement('tr');
+									pedidoRow.innerHTML = `
+			<td>${productName} <strong class="mx-2">x</strong> ${quantity}</td>
+			<td>$${total.toFixed(3)}</td>
+		  `;
+									pedidoBody.appendChild(pedidoRow);
+								});
+								document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(3);
+								document.getElementById('total').textContent = '$' + subtotal.toFixed(2); // Assuming it's subtotal for now
+							}
+
+							// Attach event listeners for quantity change
+							const quantityInputs = document.querySelectorAll('.quantity-amount');
+							quantityInputs.forEach(input => {
+								input.addEventListener('change', calculateTotal);
+							});
+
+							// Attach event listener for remove product button
+							const removeButtons = document.querySelectorAll('.remove-product');
+							removeButtons.forEach(button => {
+								button.addEventListener('click', function () {
+									const row = this.closest('tr');
+									const price = parseFloat(row.querySelector('.product-price').textContent.replace('$', '').replace(',', ''));
+									const quantity = parseInt(row.querySelector('.quantity-amount').value);
+									const total = price * quantity;
+									const subtotalElement = document.getElementById('subtotal');
+									const totalElement = document.getElementById('total');
+									const currentSubtotal = parseFloat(subtotalElement.textContent.replace('$', '').replace(',', ''));
+									const newSubtotal = currentSubtotal - total;
+									subtotalElement.textContent = '$' + newSubtotal.toFixed(3);
+									totalElement.textContent = '$' + newSubtotal.toFixed(2); // Assuming it's subtotal for now
+									row.remove();
+
+									// Actualizar el pedido después de eliminar un producto
+									calculateTotal();
+								});
+							});
+
+							// Initial calculation
+							calculateTotal();
+						});
+					</script>
+
+
+
+
+				</div>
+
 		</div>
-		<!-- </form> -->
+		</form>
+
+		<div class="col-md-6">
+
+		</div>
+	</div>
+	<!-- </form> -->
 	</div>
 	</div>
 
@@ -172,7 +257,8 @@
 
 			<div class="row g-5 mb-5">
 				<div class="col-lg-4">
-					<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Speed<span>.</span></a></div>
+					<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Speed Store<span>.</span></a>
+					</div>
 					<p class="mb-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam sit,
 						repudiandae eligendi eius officiis nesciunt!</p>
 
