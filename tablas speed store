@@ -35,3 +35,11 @@ CREATE TABLE compra (
     FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
 
+CREATE TABLE carro (
+    id_carro INT(10) AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT(10),
+    id_producto INT(10),
+    cantidad INT(10),
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+    FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
+);

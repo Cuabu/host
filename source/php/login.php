@@ -89,7 +89,7 @@ if (isset($_POST['cerrar_sesion'])) {
             echo '<script>
                     setTimeout(function() {
                         window.location.href = "../pages/login.php";
-                    }, 1200000); // 
+                    }, 1200000); 
                   </script>';
         } else {
             echo "<img src='ruta/a/la/imagen.png' class='logo' alt='Logo'>";
@@ -112,26 +112,7 @@ if (isset($_POST['cerrar_sesion'])) {
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarsFurni">
-                <ul class="navbar-nav ms-auto mb-2 mb-md-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Menu
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <button class="dropdown-item" type="button" data-toggle="modal" data-target="#modalInsercion">Agregar Producto</button>
-                            <button class="dropdown-item" type="button" data-toggle="modal" data-target="#modalModificar">Modificar Producto</button>
-                            <button class="dropdown-item" type="button" data-toggle="modal" data-target="#modalEliminar">Eliminar Producto</button>
-                            <button class="dropdown-item" type="button" data-toggle="modal" data-target="#modalRegistro">Registrar Tienda</button>
-                        </div>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="../pages/formulario.html">Inicio</a>
-                    </li>
-                    <!-- Barra lateral con menú desplegable -->
 
-                </ul>
-            </div>
         </div>
     </nav>
     <!-- Fin del Header/Nav -->
@@ -141,212 +122,60 @@ if (isset($_POST['cerrar_sesion'])) {
 
 
 
-    <!-- Ventanas Modales -->
-    <!-- Ventana modal para el formulario de inserción -->
-    <div class="modal fade" id="modalInsercion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Agregar producto</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Formulario de inserción -->
-                    <form id="formularioInsercion" action="../php/insertar.php" method="post">
 
-                        <div class="form-group">
-                            <label for="nombre">Nombre:</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="descripcion">Descripción:</label>
-                            <input type="text" class="form-control" id="descripcion" name="descripcion" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="precio">Precio:</label>
-                            <input type="text" class="form-control" id="precio" name="precio" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="imagen">Imagen:</label>
-                            <input type="file" class="form-control" id="imagen" name="imagen" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Agregar</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Ventana modal para modificar registro -->
-    <div class="modal fade" id="modalModificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modificar Producto</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
+    <body>
 
-                    <!-- Formulario de modificación -->
-                    <form id="formularioModificacion" action="../php/modificar.php" method="post">
+        <tbody id="tablaDatos">
 
-                        <div class="form-group">
-                            <label for="nombreModificar">Nuevo Nombre:</label>
-                            <input type="text" class="form-control" id="nombreModificar" name="nombreModificar" required>
-                        </div>
+            <!-- En el encabezado de tu página, asegúrate de incluir la referencia a Bootstrap -->
+            <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-                        <div class="form-group">
-                            <label for="descripcionModificar">Nueva Descripción:</label>
-                            <input type="text" class="form-control" id="descripcionModificar" name="descripcionModificar" required>
-                        </div>
+            <?php
+            // Datos de conexión a la base de datos
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $database = "speed_store";
 
-                        <div class="form-group">
-                            <label for="precioModificar">Nuevo Precio:</label>
-                            <input type="text" class="form-control" id="precioModificar" name="precioModificar" required>
-                            <input type="hidden" id="codigoHidden" name="codigoHidden">
-                        </div>
+            // Crear conexión
+            $conn = new mysqli($servername, $username, $password, $database);
 
-                        <div class="form-group">
-                            <label for="codigoModificar">Código del Producto:</label>
-                            <input type="text" class="form-control" id="codigoModificar" name="codigoModificar" required>
-                            <input type="hidden" id="codigoHidden" name="codigoHidden">
-                        </div>
+            // Verificar la conexión
+            if ($conn->connect_error) {
+                die("Error de conexión: " . $conn->connect_error);
+            }
 
-                        <div class="form-group">
-                            <label for="imagen">Imagen:</label>
-                            <input type="file" class="form-control" id="imagen" name="imagen" required>
-                        </div>
+            // Consulta SQL para obtener todos los productos
+            $sql = "SELECT * FROM producto";
 
-                        <button type="submit" class="btn btn-primary">Modificar</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+            // Ejecutar la consulta
+            $resultado = $conn->query($sql);
 
-    <!-- Ventana modal para eliminar registro -->
-    <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Eliminar Producto</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Formulario de eliminación -->
-                    <form id="formularioEliminar" action="../php/eliminar.php" method="post">
-                        <div class="form-group">
-                            <label for="id_producto">ID del Producto a Eliminar:</label>
-                            <input type="text" class="form-control" id="id_producto" name="id_producto" required>
-                        </div>
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Ventana modal para el formulario de inserción -->
-    <div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Registrar Tienda</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Formulario de inserción Tienda -->
-                    <form id="formularioRegistro" action="../php/registro_tienda.php" method="post">
-                        <div class="form-group">
-                            <label for="codigo">Nombre Tienda</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="nombre">Ubicacion Tienda:</label>
-                            <input type="text" class="form-control" id="ubicacion" name="ubicacion" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="descripcion">Telefono Tienda:</label>
-                            <input type="text" class="form-control" id="telefono" name="telefono" required>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Registrar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-
-<body>
-
-    <tbody id="tablaDatos">
-
-        <!-- En el encabezado de tu página, asegúrate de incluir la referencia a Bootstrap -->
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-        <?php
-        // Datos de conexión a la base de datos
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $database = "speed_store";
-
-        // Crear conexión
-        $conn = new mysqli($servername, $username, $password, $database);
-
-        // Verificar la conexión
-        if ($conn->connect_error) {
-            die("Error de conexión: " . $conn->connect_error);
-        }
-
-        // Consulta SQL para obtener todos los productos
-        $sql = "SELECT * FROM producto";
-
-        // Ejecutar la consulta
-        $resultado = $conn->query($sql);
-
-        // Verificar si se obtuvieron resultados
-        if ($resultado->num_rows > 0) {
-            echo "<div class='container'>
+            // Verificar si se obtuvieron resultados
+            if ($resultado->num_rows > 0) {
+                echo "<div class='container'>
             <table class='table'>
                 <thead>
                     <tr>
                         <th>ID del Producto</th>
-                        <th>Nombre</th>
+                        <th>Nombre</th>//
                         <th>Descripción</th>
                         <th>Precio</th>
-                        <th>Ver imagen</th>
+                        <th>Ver imagen</th>//
                         <th>Fecha de Creación</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>";
 
-            // Imprimir los datos de cada producto en filas de la tabla
-            while ($fila = $resultado->fetch_assoc()) {
-                // Descargar la imagen de forma temporal
-                $imagenTemporal = tempnam(sys_get_temp_dir(), 'img');
-                file_put_contents($imagenTemporal, base64_decode($fila["imagen"]));
+                // Imprimir los datos de cada producto en filas de la tabla
+                while ($fila = $resultado->fetch_assoc()) {
+                    // Descargar la imagen de forma temporal
+                    $imagenTemporal = tempnam(sys_get_temp_dir(), 'img');
+                    file_put_contents($imagenTemporal, base64_decode($fila["imagen"]));
 
-                echo "<tr>
+                    echo "<tr>
                 <td>" . $fila["id_producto"] . "</td>
                 <td>" . $fila["nombre"] . "</td>
                 <td>" . $fila["descripcion"] . "</td>
@@ -361,108 +190,108 @@ if (isset($_POST['cerrar_sesion'])) {
                     <button class='btn btn-success agregar'>Agregar</button>
                 </td>
             </tr>";
-            }
-            echo "</tbody></table></div>";
-        } else {
-            echo "<div class='container'>
+                }
+                echo "</tbody></table></div>";
+            } else {
+                echo "<div class='container'>
             <p>No se encontraron productos.</p>
           </div>";
-        }
+            }
 
-        // Cerrar la conexión
-        $conn->close();
-        ?>
+            // Cerrar la conexión
+            $conn->close();
+            ?>
 
-        <!-- Modal para editar producto -->
-        <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditarLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalEditarLabel">Editar Producto</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- Aquí puedes colocar el formulario de edición de producto -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary">Guardar Cambios</button>
+            <!-- Modal para editar producto -->
+            <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditarLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalEditarLabel">Editar Producto</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Aquí puedes colocar el formulario de edición de producto -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Asegúrate de incluir los scripts de jQuery y Bootstrap al final de tu página -->
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+            <script>
+                $(document).ready(function() {
+                    // Agrega un evento de clic a los botones "Ver imagen"
+                    $('.ver-imagen').on('click', function() {
+                        // Obtiene la ruta de la imagen temporal desde el atributo data-imagen del botón
+                        var imagenTemporal = $(this).data('imagen');
+
+                        // Crea una ventana emergente y establece su contenido como la imagen temporal
+                        var ventanaEmergente = window.open('');
+                        ventanaEmergente.document.write('<img src="' + imagenTemporal + '" />');
+                    });
+
+                    // Agrega un evento de clic al botón "Editar"
+                    $('.editar').on('click', function() {
+                        // Obtiene los datos del producto desde los atributos data del botón
+                        var idProducto = $(this).data('id');
+                        var nombreProducto = $(this).data('nombre');
+                        var descripcionProducto = $(this).data('descripcion');
+                        var precioProducto = $(this).data('precio');
+
+                        // Llena el formulario modal con los datos del producto
+                        $('#modalEditar').modal('show');
+                        // Aquí puedes completar el código para llenar el formulario modal con los datos del producto
+                    });
+
+                    // Agrega un evento de clic al botón "Eliminar"
+                    $('.eliminar').on('click', function() {
+                        // Obtiene el ID del producto a eliminar desde el atributo data del botón
+                        var idProducto = $(this).data('id');
+                        // Aquí puedes completar el código para ejecutar la acción de eliminación del producto
+                    });
+
+                    // Agrega un evento de clic al botón "Agregar"
+                    $('.agregar').on('click', function() {
+                        // Aquí puedes completar el código para ejecutar la acción de agregar un nuevo producto
+                    });
+                });
+            </script>
+
+        </tbody>
+        </table>
+    </body>
+
+    <!--footer aqui-->
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container text-center">
+            <span class="text-muted">© 2024 Speed Store. Todos los derechos reservados.</span>
         </div>
-
-        <!-- Asegúrate de incluir los scripts de jQuery y Bootstrap al final de tu página -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-
-        <script>
-            $(document).ready(function() {
-                // Agrega un evento de clic a los botones "Ver imagen"
-                $('.ver-imagen').on('click', function() {
-                    // Obtiene la ruta de la imagen temporal desde el atributo data-imagen del botón
-                    var imagenTemporal = $(this).data('imagen');
-
-                    // Crea una ventana emergente y establece su contenido como la imagen temporal
-                    var ventanaEmergente = window.open('');
-                    ventanaEmergente.document.write('<img src="' + imagenTemporal + '" />');
-                });
-
-                // Agrega un evento de clic al botón "Editar"
-                $('.editar').on('click', function() {
-                    // Obtiene los datos del producto desde los atributos data del botón
-                    var idProducto = $(this).data('id');
-                    var nombreProducto = $(this).data('nombre');
-                    var descripcionProducto = $(this).data('descripcion');
-                    var precioProducto = $(this).data('precio');
-
-                    // Llena el formulario modal con los datos del producto
-                    $('#modalEditar').modal('show');
-                    // Aquí puedes completar el código para llenar el formulario modal con los datos del producto
-                });
-
-                // Agrega un evento de clic al botón "Eliminar"
-                $('.eliminar').on('click', function() {
-                    // Obtiene el ID del producto a eliminar desde el atributo data del botón
-                    var idProducto = $(this).data('id');
-                    // Aquí puedes completar el código para ejecutar la acción de eliminación del producto
-                });
-
-                // Agrega un evento de clic al botón "Agregar"
-                $('.agregar').on('click', function() {
-                    // Aquí puedes completar el código para ejecutar la acción de agregar un nuevo producto
-                });
-            });
-        </script>
-
-    </tbody>
-    </table>
-</body>
-
-<!--footer aqui-->
-<footer class="footer mt-auto py-3 bg-light">
-    <div class="container text-center">
-        <span class="text-muted">© 2024 Speed Store. Todos los derechos reservados.</span>
-    </div>
-</footer>
+    </footer>
 
 
-<!-- Scripts -->
-<!-- Verificación de autenticación y script JavaScript para evitar retroceso -->
-<script src="../pages/js/login.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
-    // Deshabilitar el botón de retroceso del navegador después de cerrar sesión
-    window.history.pushState(null, document.title, window.location.href);
-    window.addEventListener('popstate', function(event) {
+    <!-- Scripts -->
+    <!-- Verificación de autenticación y script JavaScript para evitar retroceso -->
+    <script src="../pages/js/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Deshabilitar el botón de retroceso del navegador después de cerrar sesión
         window.history.pushState(null, document.title, window.location.href);
-    });
-</script>
+        window.addEventListener('popstate', function(event) {
+            window.history.pushState(null, document.title, window.location.href);
+        });
+    </script>
 
 
 </body>
