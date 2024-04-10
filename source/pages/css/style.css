@@ -1025,3 +1025,11 @@ textarea {
   border-radius: 50%;
   background: rgba(59, 93, 80, 0.2);
 }
+
+.hero-img-wrap {
+  
+  float: right;
+  position: -webkit-sticky;
+  top: 20px; /* Cambia este valor según la distancia que quieras desde la parte superior */
+  right: 320px; /* Cambia este valor según la distancia que quieras desde el margen derecho */
+}

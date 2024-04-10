@@ -1,16 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enlace a otra página</title>
+  <meta http-equiv="refresh" content="3;url=./source/pages/index.html">
+  <title>Redireccionando...</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      color: #666;
+      margin-top: 10px;
+    }
+
+    .spinner {
+      border: 8px solid rgba(0, 0, 0, 0.1);
+      border-left-color: #333;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
-
 <body>
-  <h1>Enlace a otra página HTML</h1>
-  <p>Para ir a la otra página, haz clic en el siguiente enlace:</p>
-  <a href="source/pages/index.html">Ir a otra página</a>
+  <div class="container">
+    <h1>Redireccionando...</h1>
+    <div class="spinner"></div>
+    <p>Por favor, espere mientras lo redirigimos...</p>
+  </div>
 </body>
-
 </html>
