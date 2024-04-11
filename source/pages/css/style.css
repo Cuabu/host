@@ -1033,3 +1033,9 @@ textarea {
   top: 20px; /* Cambia este valor según la distancia que quieras desde la parte superior */
   right: 320px; /* Cambia este valor según la distancia que quieras desde el margen derecho */
 }
+
+.img-with-border {
+  border: 2px solid #000; /* Color del borde y grosor */
+  border-radius: 10px; /* Borde redondeado */
+  padding: 5px; /* Espacio entre la imagen y el borde */
+}
